@@ -1,11 +1,10 @@
 import express from 'express';
 import { getNearestStops } from './getNearestStops.js';
 import { getRtArrivalData } from './getRtArrivalData.js';
-import { Stop } from './types.js';
 import _ from 'lodash';
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 app.get('/', (req, res) => {
   res.send('Hello World from SCRT');
