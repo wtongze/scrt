@@ -7,6 +7,9 @@ export async function getRtArrivalData(directionId: number, stopId: number) {
   const data = (await response.json()) as {
     Minutes: number;
     RouteName: string;
+    SchedulePrediction: boolean;
+    IsLastStop: boolean;
+    ArriveTime: string;
   }[];
-  return data;
+  return data.filter(i => !i.IsLastStop);
 }

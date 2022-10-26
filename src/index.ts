@@ -19,7 +19,7 @@ app.get('/:lat/:lon', async (req, res) => {
       nearestStops.push({
         stopId: stop.id,
         stopName: stop.name,
-        directionId: route.directionId,
+        directionId: route.directionId
       });
     });
   });
@@ -38,6 +38,8 @@ app.get('/:lat/:lon', async (req, res) => {
       stopName: i.stopName,
       minute: i.result[0].Minutes,
       routeName: i.result[0].RouteName,
+      realTime: !i.result[0].SchedulePrediction,
+      arrivalTime: i.result[0].ArriveTime,
     }));
   res.json(arrivals);
 });
